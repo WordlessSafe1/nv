@@ -9,10 +9,12 @@ vim.opt.cursorline = true
 vim.opt.autoread = true
 
 
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
 vim.opt.shiftround = true
-vim.opt.expandtab = true
+vim.opt.expandtab = false
 
 vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
+vim.api.nvim_set_keymap('i', 'jj', '<Esc>', { noremap = true, silent = true })
+
 
