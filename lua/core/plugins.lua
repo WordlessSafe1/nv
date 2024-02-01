@@ -17,7 +17,6 @@ return require('packer').startup(function(use)
   use {'bluz71/vim-moonfly-colors', disable = true}
   use 'Mofiqul/vscode.nvim'
   use 'nvim-tree/nvim-tree.lua'
-  use 'nvim-tree/nvim-web-devicons'
   use 'nvim-lualine/lualine.nvim'
   use 'nvim-treesitter/nvim-treesitter'
   use 'hrsh7th/nvim-cmp'
@@ -26,6 +25,7 @@ return require('packer').startup(function(use)
   use 'saadparwaiz1/cmp_luasnip'
   use 'rafamadriz/friendly-snippets'
   use '0xfraso/nvim-listchars'
+  use 'lewis6991/gitsigns.nvim'
   use {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
@@ -36,6 +36,7 @@ return require('packer').startup(function(use)
     tag = '0.1.4',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
+  use 'nvim-tree/nvim-web-devicons'
 
 
   -- Automatically set up your configuration after cloning packer.nvim

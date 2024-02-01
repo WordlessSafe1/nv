@@ -8,4 +8,5 @@ require("core.plugin_config.telescope")
 require("core.plugin_config.lsp_config")
 require("core.plugin_config.completions")
 require("core.plugin_config.listchars")
+require("core.plugin_config.gitsigns")
 
