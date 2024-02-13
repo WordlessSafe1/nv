@@ -1,59 +1,52 @@
-local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
-  return false
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
-local packer_bootstrap = ensure_packer()
 
-return require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
-  use {'ellisonleao/gruvbox.nvim', disable = true}
-  use {'bluz71/vim-moonfly-colors', disable = true}
-  use 'Mofiqul/vscode.nvim'
-  use 'nvim-tree/nvim-tree.lua'
-  use 'nvim-lualine/lualine.nvim'
-  use 'nvim-treesitter/nvim-treesitter'
-  use 'hrsh7th/nvim-cmp'
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'L3MON4D3/LuaSnip'
-  use 'saadparwaiz1/cmp_luasnip'
-  use 'rafamadriz/friendly-snippets'
-  use '0xfraso/nvim-listchars'
-  use 'lewis6991/gitsigns.nvim'
-  use {
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
-    "neovim/nvim-lspconfig",
-  }
-  use {
+local plugins = {
+  'wbthomason/packer.nvim',
+  {'ellisonleao/gruvbox.nvim', enabled = false},
+  {'bluz71/vim-moonfly-colors', enabled = false},
+  'Mofiqul/vscode.nvim',
+  'nvim-tree/nvim-tree.lua',
+  'nvim-lualine/lualine.nvim',
+  'nvim-treesitter/nvim-treesitter',
+  'hrsh7th/nvim-cmp',
+  'hrsh7th/cmp-nvim-lsp',
+  'L3MON4D3/LuaSnip',
+  'saadparwaiz1/cmp_luasnip',
+  'rafamadriz/friendly-snippets',
+  '0xfraso/nvim-listchars',
+  'lewis6991/gitsigns.nvim',
+  "williamboman/mason.nvim",
+  "williamboman/mason-lspconfig.nvim",
+  "neovim/nvim-lspconfig",
+  {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.4',
-    requires = { {'nvim-lua/plenary.nvim'} }
-  }
-  use 'nvim-tree/nvim-web-devicons'
-  use({
+    dependencies = { {'nvim-lua/plenary.nvim'} }
+  },
+  'nvim-tree/nvim-web-devicons',
+  {
     "utilyre/barbecue.nvim",
-    tag = "*",
-    requires = {
+    --tag = "*",
+    dependencies = {
       "SmiteshP/nvim-navic",
       "nvim-tree/nvim-web-devicons",
     },
-    after = "nvim-web-devicons",
-    config = function()
-      require("barbecue").setup()
-    end,
-  })
+  },
+}
 
+local opts = {};
 
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if packer_bootstrap then
-    require('packer').sync()
-  end
-end)
+require("lazy").setup(plugins, opts);
+
