@@ -24,9 +24,46 @@ local on_attach = function(_, bufnr)
 end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local lspconfig = require("lspconfig");
 
 -- Repeat for each LSP
-require("lspconfig").lua_ls.setup {
+lspconfig.lua_ls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }
+
+lspconfig.clangd.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+lspconfig.omnisharp.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+lspconfig.cssls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+lspconfig.html.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+lspconfig.tsserver.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+lspconfig.ltex.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+lspconfig.intelephense.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
