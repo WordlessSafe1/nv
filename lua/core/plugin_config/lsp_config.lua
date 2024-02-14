@@ -55,6 +55,7 @@ lspconfig.html.setup {
 lspconfig.tsserver.setup {
   on_attach = on_attach,
   capabilities = capabilities,
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
 }
 
 lspconfig.ltex.setup {
