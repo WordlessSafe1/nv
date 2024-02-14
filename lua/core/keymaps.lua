@@ -17,4 +17,5 @@ vim.opt.expandtab = false
 vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
 vim.api.nvim_set_keymap('i', 'jj', '<Esc>', { noremap = true, silent = true })
 
+vim.keymap.set('n', '<leader>b', ':ls<CR>:b<Space>'); -- Show buffers
 
