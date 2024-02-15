@@ -11,6 +11,8 @@ function setSpaces(opts, universal)
     table.insert(args, word)
   end
   local firstarglow = args[1] and args[1]:lower()
+  local expandtab;
+  local size;
 
   if firstarglow == 'true' or firstarglow == 'false' then
     expandtab = args[1] == 'true';

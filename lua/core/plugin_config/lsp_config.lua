@@ -13,6 +13,16 @@ require("mason-lspconfig").setup({
   }
 })
 
+-- Configure how diagnostics appear
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = false,
+  underline = true,
+  update_in_insert = true,
+  severity_sort = false,
+});
+
+
 local on_attach = function(_, bufnr)
   vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {})
   vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, {})
@@ -21,6 +31,7 @@ local on_attach = function(_, bufnr)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, {})
   vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, {})
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
+  vim.keymap.set('n', 'gI', function() vim.diagnostic.open_float(nil, {focus=false}); end, {})
 end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
