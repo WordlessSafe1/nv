@@ -34,6 +34,7 @@ local plugins = {
   "williamboman/mason-lspconfig.nvim",
   "neovim/nvim-lspconfig",
   "onsails/lspkind.nvim",
+  "akinsho/toggleterm.nvim",
   {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.4',

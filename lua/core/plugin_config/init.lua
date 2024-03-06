@@ -10,4 +10,5 @@ require("core.plugin_config.completions")
 require("core.plugin_config.listchars")
 require("core.plugin_config.gitsigns")
 require("core.plugin_config.barbecue")
+require("core.plugin_config.toggleterm")
 

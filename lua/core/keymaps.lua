@@ -19,6 +19,10 @@ vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
 vim.keymap.set('n', '<leader>b', ':ls<CR>:b'); -- Show buffers
 -- vim.keymap.set({'n', 'v'}, '<Leader>v', ':let @x=@" | let @"=@a | let @a=@b | let @b=@x<CR>');
 
+vim.keymap.set('n', '<c-\\>w', ':wa | qa<CR>'); -- Equiv of wqa, but allows execution while terminals(and other non-writable buffers) are open
+vim.keymap.set('t', '<c-\\><c-w>', '<c-\\><c-n><c-w>'); -- Exit terminal focus and begin window navigation
+vim.keymap.set('t', '<c-\\>q', '<c-\\><c-n>:bd!<CR>');
+
 local KeyBufferState = 1; -- 1..3 - ", a, b
 local KeyBufferStates = { '@\\"  @a @b', '@a  @b @\\"', '@b  @\\" @a' };
 function CycleBuffers(amount)
