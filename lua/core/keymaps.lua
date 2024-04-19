@@ -14,6 +14,9 @@ vim.opt.shiftwidth = 4
 vim.opt.shiftround = true
 vim.opt.expandtab = false
 
+
+vim.keymap.set({'n', 'v', 't'}, ';', ':');
+
 vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
 
 vim.keymap.set('n', '<leader>b', ':ls<CR>:b'); -- Show buffers
